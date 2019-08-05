@@ -1,0 +1,25 @@
+/* XPM */
+static char *logosmall[]={
+"16 16 6 1",
+"a c #000000",
+"b c #3f3f3f",
+"c c #bfbfbf",
+"d c #777777"
+". c None",
+"# c #ffffff",
+"...dd.......d...",
+"..daad.....dad..",
+"..da#ad...da#ad.",
+".da###addda##ad.",
+".da####aaa###ad.",
+".da##########ad.",
+"da############ad",
+"da###a#####a##ad",
+"da###b#####b##ad",
+"daaa##c#a#c##aaa",
+"aa####aacaa###ad",
+"ddaa#########aaa",
+"dadda#aa#aa#aadd",
+".d..daaaaaaadd..",
+".....dadddad....",
+"......d...d....."};

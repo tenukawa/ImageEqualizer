@@ -1,0 +1,15 @@
+ieqfiltereditor.exe: ieqfiltereditor.obj ieqfilter.obj
+	link -SUBSYSTEM:CONSOLE \
+		ieqfiltereditor.obj mocieqfiltereditor.obj \
+		ieqfilter.obj ieqconst.obj qtmain.lib qt-mtnc321.lib
+ieqfiltereditor.obj: ieq.h ieqfilter.h ieqfiltereditor.h ieqfiltereditor.cpp
+	cl -c -GX -DUNIT_TEST -DDEBUG ieqfiltereditor.cpp
+mocieqfiltereditor.obj: mocieqfiltereditor.cpp
+	cl -c -GX mocieqfiltereditor.cpp
+ieqfilter.obj: ieq.h ieqfilter.h ieqfilter.cpp
+	cl -c -GX ieqfilter.cpp
+ieqconst.obj: ieq.h ieqconst.cpp
+	cl -c GX ieqconst.cpp
+mocieqfiltereditor.cpp: ieq.h ieqfilter.h ieqfiltereditor.h
+	moc ieqfiltereditor.h -o mocieqfiltereditor.cpp
+

@@ -1,0 +1,28 @@
+ieqfiltereditform.exe: ieqfiltereditform.obj mocieqfiltereditform.obj \
+                       ieqrationalspinbox.obj ieqfiltereditor.obj \
+                       mocieqfiltereditor.obj ieqfilter.obj ieqconst.obj
+	link -SUBSYSTEM:CONSOLE \
+		ieqfiltereditform.obj mocieqfiltereditform.obj ieqrationalspinbox.obj \
+		ieqfiltereditor.obj mocieqfiltereditor.obj ieqfilter.obj ieqconst.obj \
+		qtmain.lib qt-mtnc321.lib
+ieqfiltereditform.obj: ieq.h ieqexception.h ieqfiltereditform.h \
+                       ieqfiltereditor.h ieqfilter.h ieqfiltereditform.cpp
+	cl -c -GX -DUNIT_TEST -DDEBUG -DQT_NON_COMMERCIAL ieqfiltereditform.cpp
+mocieqfiltereditform.obj: mocieqfiltereditform.cpp
+	cl -c -GX mocieqfiltereditform.cpp
+mocieqfiltereditform.cpp: ieq.h ieqfilter.h \
+                          ieqfiltereditor.h ieqfiltereditform.h
+	moc ieqfiltereditform.h -o mocieqfiltereditform.cpp
+ieqfiltereditor.obj: ieq.h ieqfilter.h ieqfiltereditor.h ieqfiltereditor.cpp
+	cl -c -GX ieqfiltereditor.cpp
+mocieqfiltereditor.obj: mocieqfiltereditor.cpp
+	cl -c -GX mocieqfiltereditor.cpp
+mocieqfiltereditor.cpp: ieq.h ieqfilter.h ieqfiltereditor.h
+	moc ieqfiltereditor.h -o mocieqfiltereditor.cpp
+ieqfilter.obj: ieq.h ieqexception.h ieqfilter.h ieqfilter.cpp
+	cl -c -GX ieqfilter.cpp
+ieqconst.obj: ieq.h ieqconst.cpp
+	cl -c -GX ieqconst.cpp
+ieqrationalspinbox.obj: ieqrationalspinbox.h ieqrationalspinbox.cpp
+	cl -c -GX ieqrationalspinbox.cpp
+

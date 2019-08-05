@@ -1,0 +1,10 @@
+ieqimage.exe: ieqimage.obj ieqdft.obj ieqconst.obj
+	link -SUBSYSTEM:CONSOLE \
+		ieqimage.obj ieqdft.obj ieqconst.obj \
+		qtmain.lib qt-mtnc321.lib FFTW2dll.lib
+ieqimage.obj: ieq.h ieqimage.h ieqimage.cpp
+	cl -c -GX -DUNIT_TEST -DDEBUG -DUSE_IEQ_DFT ieqimage.cpp
+ieqdft.obj: ieq.h ieqdft.h ieqdft.cpp
+	cl -c -GX ieqdft.cpp
+ieqconst.obj: ieq.h ieqconst.cpp
+	cl -c -GX ieqconst.cpp

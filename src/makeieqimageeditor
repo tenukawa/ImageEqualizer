@@ -1,0 +1,17 @@
+ieqimageeditor.exe: ieqimageeditor.obj mocieqimageeditor.obj \
+                    ieqimage.obj ieqfilter.obj
+	link -SUBSYSTEM:CONSOLE \
+		ieqimageeditor.obj mocieqimageeditor.obj ieqimage.obj ieqfilter.obj \
+		qtmain.lib qt-mtnc321.lib FFTW2dll.lib
+ieqimageeditor.obj: ieq.h ieqexception.h ieqimage.h ieqfilter.h \
+                    ieqimageeditor.h ieqimageeditor.cpp
+	cl -c -GX -DUNIT_TEST -DDEBUG ieqimageeditor.cpp
+mocieqimageeditor.obj: mocieqimageeditor.cpp
+	cl -c -GX mocieqimageeditor.cpp
+mocieqimageeditor.cpp: ieqimageeditor.h
+	moc ieqimageeditor.h -o mocieqimageeditor.cpp
+ieqimage.obj: ieq.h ieqimage.h ieqimage.cpp
+	cl -c -GX ieqimage.cpp
+ieqfilter.obj: ieq.h ieqexception.h ieqfilter.h ieqfilter.cpp
+	cl -c -GX ieqfilter.cpp
+
